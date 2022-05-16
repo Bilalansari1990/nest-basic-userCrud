@@ -15,7 +15,5 @@ async function bootstrap() {
   SwaggerModule.setup('/', app, document);
   await app.listen(3000);
 
-  // Mongoos connection
-
 }
 bootstrap();
