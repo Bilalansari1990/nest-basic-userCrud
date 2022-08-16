@@ -21,4 +21,13 @@ export class EmployeeRepositary {
     async findOne(employeeFilter: FilterQuery<Employee>): Promise<Employee> {
         return this.employeeModel.findById(employeeFilter)
     }
+    async findOneAndEdit(employeeFilter: FilterQuery<Employee>): Promise<Employee> {
+        return this.employeeModel.findByIdAndUpdate(employeeFilter)
+    }
+
+    async findOneAndDelete(employeeFilter: FilterQuery<Employee>): Promise<Employee> {
+        return this.employeeModel.findByIdAndDelete(employeeFilter)
+    }
+
+
 }

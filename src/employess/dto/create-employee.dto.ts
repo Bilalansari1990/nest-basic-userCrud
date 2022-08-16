@@ -28,4 +28,6 @@ export class CreateEmployeeDto {
     @ApiProperty({ required: true })
     @MaxLength(50)
     company: string;
+
+
 }

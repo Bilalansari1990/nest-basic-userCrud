@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { NotFoundError } from 'rxjs';
 import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { EmployessService } from './employess.service';
 import { Employee } from './schemas/employee.schema';
@@ -28,7 +29,27 @@ export class EmployessController {
     @ApiBadRequestResponse()
     @Get(':employeId')
     async getOneEmployee(@Param("employeId") employeId: string): Promise<Employee> {
-        return this.employeeService.getOneEmployee(employeId)
+        const user = this.employeeService.getOneEmployee(employeId)
+        if (!user) throw new NotFoundError('Not Found')
+        else return user
     }
+
+    @ApiOkResponse()
+    @ApiBadRequestResponse()
+    @Patch(':employeId')
+    async getOneEmployeeAndEdit(@Param('employeId') employeId: string): Promise<Employee> {
+        const user = this.employeeService.getOneEmployeeAndEdit(employeId)
+        if (!user) throw new NotFoundException()
+        else return user
+    }
+
+
+    @Delete(':employeId')
+    async getOneEmployeeAndDelete(@Param('employeId') employeId: string): Promise<Employee> {
+        const res = this.employeeService.getOneEmployeeAndDelete(employeId)
+        console.log(res);
+        return
+    }
+
 
 }

@@ -25,4 +25,11 @@ export class EmployessService {
     async getOneEmployee(_id): Promise<Employee> {
         return this.employeeRepositary.findOne({ _id })
     }
+
+    async getOneEmployeeAndEdit(_id): Promise<Employee> {
+        return this.employeeRepositary.findOneAndEdit({ _id })
+    }
+    async getOneEmployeeAndDelete(_id): Promise<Employee> {
+        return this.employeeRepositary.findOneAndDelete({ _id })
+    }
 }
