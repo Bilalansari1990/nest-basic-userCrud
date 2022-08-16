@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsAlphanumeric, IsEmail, IsPositive, MaxLength } from 'class-validator';
+import { IsEmail, IsPositive } from 'class-validator';
 
 export class CreateUserDto {
   @ApiProperty({ required: false })
@@ -12,4 +12,6 @@ export class CreateUserDto {
   @IsPositive()
   age?: number;
 
+
 }
+

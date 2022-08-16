@@ -8,6 +8,6 @@ import { localStrategy } from './local.strategy';
 @Module({
   imports: [PersonsModule, PassportModule],
   controllers: [AuthController],
-  providers: [AuthService, localStrategy]
+  providers: [AuthService, localStrategy],
 })
-export class AuthModule { }
+export class AuthModule {}
